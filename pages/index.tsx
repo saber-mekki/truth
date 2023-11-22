@@ -3,19 +3,33 @@ import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 import backgroundImage from '../public/photo/back.jpg'
 import { useEffect, useRef } from 'react'
+import CardComponent from './CardComponent'
+import ReactGA from 'react-ga'
 
 export default function Home() {
-  const allPhotoNumber = 5
-  const mp3Url = '/gaza/hatha.mp3' // Replace with the actual path to your MP3 file
+  const allPhotoNumber = 25
+  const mp3Url = '/gaza/hatha1.mp3' // Replace with the actual path to your MP3 file
   const audioRef = useRef()
+
+  const statsData = {
+    deathsToday: '+13k',
+    missing: '+3.5k',
+    childrenKilled: '+5.5k',
+    womenKilled: '+3.1k',
+    blessings: '+30k',
+  }
+  
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }, [])
 
   useEffect(() => {
     const audio: any = audioRef.current
 
     // Set the source and preload the audio
     audio.src = mp3Url
-    audio.preload = 'auto'
-
+    audio.preload = 'false'
+    audio.volume = 0.05
     // Play the audio when the component mounts
     audio.play()
 
@@ -27,10 +41,11 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>the truth</title>
-        {/* <link rel="icon" href="/favicon.ico" /> */}
+        <title>The truth</title>
+        <link rel="icon" href="/gazaLogo.ico" />
       </Head>
       <audio ref={audioRef as any} src={mp3Url} preload="auto" />
+      <CardComponent {...statsData} />
       <div
         className="d-flex flex-wrap"
         style={{
@@ -60,7 +75,6 @@ export default function Home() {
 
       <footer className={styles.footer}>
         <a>
-          Powered by{` `}Saber
           <span>
             <Image src="/gazaLogo.png" alt="Photo" width={100} height={10} />
           </span>

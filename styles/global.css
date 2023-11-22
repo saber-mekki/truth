@@ -18,3 +18,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.li_clz{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 500;
+  font-size: 25px;
+  color: rgb(134, 110, 110);
+  margin: 0;
+}
+.number_clz{
+  font-weight: 700;
+  color: #ff0000;
+  font-size: 20px;
+}

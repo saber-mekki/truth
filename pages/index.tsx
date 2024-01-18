@@ -15,7 +15,7 @@ export default function Home() {
   const audioRef = useRef()
 
   const statsData = {
-    deathsToday: '+13k',
+    deathsToday: '+15k',
     missing: '+3.5k',
     childrenKilled: '+5.5k',
     womenKilled: '+3.1k',

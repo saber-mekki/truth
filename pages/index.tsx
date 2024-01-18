@@ -15,13 +15,12 @@ export default function Home() {
   const audioRef = useRef()
 
   const statsData = {
-    deathsToday: '+15k',
+    deathsToday: '+15k', 
     missing: '+3.5k',
     childrenKilled: '+5.5k',
     womenKilled: '+3.1k',
     blessings: '+30k',
   }
-
   const [isZoomed, setIsZoomed] = useState(false)
 
   useEffect(() => {
@@ -30,7 +29,6 @@ export default function Home() {
 
   useEffect(() => {
     const audio: any = audioRef.current
-
     // Set the source and preload the audio
     audio.src = mp3Url
     audio.preload = 'false'
@@ -43,6 +41,7 @@ export default function Home() {
       audio.pause()
     }
   }, [mp3Url])
+
   return (
     <div className={styles.container}>
       <Head>
@@ -63,10 +62,12 @@ export default function Home() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+
         }}
       >
         <Zoom
-        overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
+         // @ts-ignore
+        overlayBgColorEnd="rgba(0, 0, 0, 0.85)" 
         isOpen={isZoomed}
         setIsOpen={setIsZoomed}
       >
@@ -83,6 +84,7 @@ export default function Home() {
         {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
           <div key={index} className="pb-5 pt-5">
             <Zoom
+            // @ts-ignore
         overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
         isOpen={isZoomed}
         setIsOpen={setIsZoomed}
@@ -109,4 +111,4 @@ export default function Home() {
       </footer>
     </div>
   )
-}
+        }

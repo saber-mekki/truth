@@ -5,7 +5,7 @@ import backgroundImage from '../public/photo/back.jpg'
 import { useEffect, useRef, useState } from 'react'
 import CardComponent from './CardComponent'
 
-import  Zoom  from 'react-medium-image-zoom'
+import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import ReactGA from 'react-ga'
 
@@ -15,11 +15,11 @@ export default function Home() {
   const audioRef = useRef()
 
   const statsData = {
-    deathsToday: '+15k', 
-    missing: '+3.5k',
-    childrenKilled: '+5.5k',
-    womenKilled: '+3.1k',
-    blessings: '+30k',
+    deathsToday: '+35k',
+    missing: '+22k',
+    childrenKilled: '+17k',
+    womenKilled: '+14k',
+    blessings: '+124k',
   }
   const [isZoomed, setIsZoomed] = useState(false)
 
@@ -62,43 +62,41 @@ export default function Home() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-
         }}
       >
         <Zoom
-         // @ts-ignore
-        overlayBgColorEnd="rgba(0, 0, 0, 0.85)" 
-        isOpen={isZoomed}
-        setIsOpen={setIsZoomed}
-      >
-        <div key="first" className="pb-5 pt-5">
-          <Image
-            style={{ borderRadius: '50px' }}
-            src="/gaza/now.webp"
-            alt="Photo"
-            width={1500}
-            height={1000}
-          />
-        </div>
-         </Zoom>
-        {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
-          <div key={index} className="pb-5 pt-5">
-            <Zoom
-            // @ts-ignore
-        overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
-        isOpen={isZoomed}
-        setIsOpen={setIsZoomed}
-      >
+          // @ts-ignore
+          overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
+          isOpen={isZoomed}
+          setIsOpen={setIsZoomed}
+        >
+          <div key="first" className="pb-5 pt-5">
             <Image
               style={{ borderRadius: '50px' }}
-              src={`/gaza/gaza${index}.jpg`}
+              src="/gaza/now.webp"
               alt="Photo"
               width={1500}
               height={1000}
             />
-              </Zoom>
           </div>
-          
+        </Zoom>
+        {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
+          <div key={index} className="pb-5 pt-5">
+            <Zoom
+              // @ts-ignore
+              overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
+              isOpen={isZoomed}
+              setIsOpen={setIsZoomed}
+            >
+              <Image
+                style={{ borderRadius: '50px' }}
+                src={`/gaza/gaza${index}.jpg`}
+                alt="Photo"
+                width={1500}
+                height={1000}
+              />
+            </Zoom>
+          </div>
         ))}
       </div>
 
@@ -111,4 +109,4 @@ export default function Home() {
       </footer>
     </div>
   )
-        }
+}

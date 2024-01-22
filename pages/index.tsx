@@ -15,11 +15,13 @@ export default function Home() {
   const audioRef = useRef()
 
   const statsData = {
-    deathsToday: '+45k',
+    deathsToday: '+25k',
     missing: '+40k',
     childrenKilled: '+20k',
     womenKilled: '+15k',
-    blessings: '+150k',
+    blessings: '+62k',
+    studentsKilled:'+4k',
+    studentsBlessing:'+7k',
   }
   const [isZoomed, setIsZoomed] = useState(false)
 

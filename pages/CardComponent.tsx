@@ -8,14 +8,17 @@ interface CardProps {
   childrenKilled: any
   womenKilled: any
   blessings: any
+  studentsKilled: any
+  studentsBlessing: any
 }
-
 const CardComponent: React.FC<CardProps> = ({
   deathsToday,
   missing,
   childrenKilled,
   womenKilled,
   blessings,
+  studentsKilled,
+  studentsBlessing,
 }) => {
   return (
     <div className="card">
@@ -25,7 +28,8 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="number_clz">{deathsToday}</a>
         </li>
         <li>
-          <a className="li_clz">Number of missings :</a> <a className="number_clz">{missing}</a>
+          <a className="li_clz">Number of missings :</a>
+          <a className="number_clz">{missing}</a>
         </li>
         <li>
           <a className="li_clz">Number of children Killed :</a>{' '}
@@ -36,15 +40,17 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="number_clz">{womenKilled}</a>
         </li>
         <li>
-          <a className="li_clz">Number of blessings :</a> <a className="number_clz">{blessings}</a>
+          <a className="li_clz">Number of blessings :</a>
+          <a className="number_clz">{blessings}</a>
         </li>
         <li>
-          <a className="li_clz">Number of students Kiiled :</a> <a className="number_clz">{studentsKilled}</a>
+          <a className="li_clz">Number of students Kiiled :</a>
+          <a className="number_clz">{studentsKilled}</a>
         </li>
         <li>
-          <a className="li_clz">Number of students blessing :</a> <a className="number_clz">{studentsBlessing}</a>
+          <a className="li_clz">Number of students blessing :</a>
+          <a className="number_clz">{studentsBlessing}</a>
         </li>
-
       </ul>
     </div>
   )

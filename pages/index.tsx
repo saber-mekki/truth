@@ -3,11 +3,12 @@ import styles from '@/styles/Home.module.css'
 import Image from 'next/image'
 import backgroundImage from '../public/photo/back.jpg'
 import { useEffect, useRef, useState } from 'react'
+import Zoom from 'react-medium-image-zoom'
+import ReactGA from 'react-ga'
+
 import CardComponent from './CardComponent'
 
-import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import ReactGA from 'react-ga'
 
 export default function Home() {
   const allPhotoNumber = 25
@@ -20,15 +21,16 @@ export default function Home() {
     childrenKilled: '+20k',
     womenKilled: '+15k',
     blessings: '+62k',
-    studentsKilled:'+4k',
-    studentsBlessing:'+7k',
+    studentsKilled: '+4k',
+    studentsBlessing: '+7k',
   }
-  const [isZoomed, setIsZoomed] = useState(false)
+  const [isZoomed, setIsZoomed] = useState<boolean>(false)
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
+  var test: string
   useEffect(() => {
     const audio: any = audioRef.current
     // Set the source and preload the audio
@@ -66,22 +68,6 @@ export default function Home() {
           justifyContent: 'center',
         }}
       >
-        <Zoom
-          // @ts-ignore
-          overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
-          isOpen={isZoomed}
-          setIsOpen={setIsZoomed}
-        >
-          <div key="first" className="pb-5 pt-5">
-            <Image
-              style={{ borderRadius: '50px' }}
-              src="/gaza/now.webp"
-              alt="Photo"
-              width={1500}
-              height={1000}
-            />
-          </div>
-        </Zoom>
         {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
           <div key={index} className="pb-5 pt-5">
             <Zoom

@@ -1,8 +1,15 @@
-import { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export function Layout({ children }: { children: ReactNode }) {
+  const [selectedLanguage, setSelectedLanguage] = useState('en') // Default language
+
+  const handleLanguageChange = (event: any) => {
+    const newLanguage = event.target.value
+    setSelectedLanguage(newLanguage)
+  }
+
   return (
     <div className="flex flex-col h-screen mx-auto">
       <nav className="border-b border-gray-200 py-5 relative z-20 bg-background shadow-[0_0_15px_0_rgb(0,0,0,0.1)]">
@@ -13,13 +20,7 @@ export function Layout({ children }: { children: ReactNode }) {
               href="/"
             >
               <span>
-                <Image
-                  src="/gazaLogo.png"
-                  alt="Photo"
-                  width={100}
-                  height={10}
-                />
-               
+                <Image src="/gazaLogo.png" alt="Photo" width={100} height={10} />
               </span>
             </Link>
             <ul className="flex items-center content-center">
@@ -41,6 +42,33 @@ export function Layout({ children }: { children: ReactNode }) {
               {/* <li className="font-medium" style={{ letterSpacing: '.01px' }}> */}
 
               <h1>See the truth</h1>
+              <div style={{ right: '32px', position: 'absolute' }}>
+                {/* <Image
+                  src="/imsrc/angl.jpg"
+                  alt="Photo"
+                  width={100}
+                  height={10}
+                  className='lang___clz'
+                  style={{right: "32px",
+                    position: "absolute"}}
+                />
+                <Image
+                  src="/imsrc/france.jpg"
+                  alt="Photo"
+                  width={100}
+                  height={10}
+                  className='lang___clz'
+                  style={{right: "32px",
+                    position: "absolute"}}
+                />
+                 */}
+                <select value={selectedLanguage} onChange={handleLanguageChange}>
+                  <option value="en">English</option>
+                  <option value="fr">Français</option>
+                  {/* Add more language options as needed */}
+                </select>
+              </div>
+
               {/* </li> */}
             </ul>
           </div>

@@ -44,11 +44,19 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="number_clz">{blessings}</a>
         </li>
         <li>
+<<<<<<< Updated upstream
           <a className="li_clz">Number of students Kiiled :</a>
           <a className="number_clz">{studentsKilled}</a>
         </li>
         <li>
           <a className="li_clz">Number of students blessing :</a>
+=======
+          <a className="li_clz">Number of students Killed :</a>{' '}
+          <a className="number_clz">{studentsKilled}</a>
+        </li>
+        <li>
+          <a className="li_clz">Number of students blessing :</a>{' '}
+>>>>>>> Stashed changes
           <a className="number_clz">{studentsBlessing}</a>
         </li>
       </ul>

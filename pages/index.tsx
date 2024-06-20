@@ -11,7 +11,7 @@ import CardComponent from './CardComponent'
 import 'react-medium-image-zoom/dist/styles.css'
 
 export default function Home() {
-  const allPhotoNumber = 25
+  const allPhotoNumber = 26
   const mp3Url = '/gaza/hatha1.mp3' // Replace with the actual path to your MP3 file
   const audioRef = useRef()
 
@@ -54,7 +54,7 @@ export default function Home() {
       <audio ref={audioRef as any} src={mp3Url} preload="auto" />
       <CardComponent {...statsData} />
       <div
-        className="d-flex flex-wrap"
+        className="slide-container"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
           backgroundPosition: 'center',
@@ -67,15 +67,8 @@ export default function Home() {
           justifyContent: 'center',
         }}
       >
-        <Image
-          style={{ borderRadius: '50px' }}
-          src="/gaza/now.webp"
-          alt="Photo"
-          width={1500}
-          height={1000}
-        />
         {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
-          <div key={index} className="pb-5 pt-5">
+          <div key={index} className="slide">
             <Zoom
               // @ts-ignore
               overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
@@ -83,11 +76,18 @@ export default function Home() {
               setIsOpen={setIsZoomed}
             >
               <Image
-                style={{ borderRadius: '50px' }}
+                style={{
+                  display: 'inline-block' /* Ensure images are displayed as block elements */,
+                  width: '100%' /* Ensure images take up full width of their container */,
+                  height: 'auto' /* Allow images to scale proportionally */,
+                  borderRadius: '20px',
+
+                  transition: 'left 1.5s ease-in-out',
+                }}
                 src={`/gaza/gaza${index}.jpg`}
                 alt="Photo"
-                width={1500}
-                height={1000}
+                width={100}
+                height={200}
               />
             </Zoom>
           </div>

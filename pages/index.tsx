@@ -30,7 +30,6 @@ export default function Home() {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
-  var test: string
   useEffect(() => {
     const audio: any = audioRef.current
     // Set the source and preload the audio
@@ -68,6 +67,13 @@ export default function Home() {
           justifyContent: 'center',
         }}
       >
+        <Image
+          style={{ borderRadius: '50px' }}
+          src="/gaza/now.webp"
+          alt="Photo"
+          width={1500}
+          height={1000}
+        />
         {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
           <div key={index} className="pb-5 pt-5">
             <Zoom

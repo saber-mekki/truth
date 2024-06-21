@@ -7,18 +7,18 @@ interface CardProps {
   missing: any
   childrenKilled: any
   womenKilled: any
-  blessings: any
+  Wounded: any
   studentsKilled: any
-  studentsBlessing: any
+  studentsWounded: any
 }
 const CardComponent: React.FC<CardProps> = ({
   deathsToday,
   missing,
   childrenKilled,
   womenKilled,
-  blessings,
+  Wounded,
   studentsKilled,
-  studentsBlessing,
+  studentsWounded,
 }) => {
   return (
     <div className="card">
@@ -40,16 +40,16 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="number_clz">{womenKilled}</a>
         </li>
         <li>
-          <a className="li_clz">Number of blessings :</a>
-          <a className="number_clz">{blessings}</a>
+          <a className="li_clz">Number of Wounded :</a>
+          <a className="number_clz">{Wounded}</a>
         </li>
         <li>
           <a className="li_clz">Number of students Killed :</a>
           <a className="number_clz">{studentsKilled}</a>
         </li>
         <li>
-          <a className="li_clz">Number of students blessing :</a>
-          <a className="number_clz">{studentsBlessing}</a>
+          <a className="li_clz">Number of students Wounded :</a>
+          <a className="number_clz">{studentsWounded}</a>
         </li>
       </ul>
     </div>

@@ -16,13 +16,13 @@ export default function Home() {
   const audioRef = useRef()
 
   const statsData = {
-    deathsToday: '+25k',
+    deathsToday: '+37k',
     missing: '+40k',
     childrenKilled: '+20k',
     womenKilled: '+15k',
-    blessings: '+62k',
+    Wounded: '+85k',
     studentsKilled: '+4k',
-    studentsBlessing: '+7k',
+    studentsWounded: '+7k',
   }
   const [isZoomed, setIsZoomed] = useState<boolean>(false)
 
@@ -60,7 +60,7 @@ export default function Home() {
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
-          width: '100vw',
+          width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
@@ -81,8 +81,6 @@ export default function Home() {
                   width: '100%' /* Ensure images take up full width of their container */,
                   height: 'auto' /* Allow images to scale proportionally */,
                   borderRadius: '20px',
-
-                  transition: 'left 1.5s ease-in-out',
                 }}
                 src={`/gaza/gaza${index}.jpg`}
                 alt="Photo"
@@ -92,6 +90,55 @@ export default function Home() {
             </Zoom>
           </div>
         ))}
+        {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
+          <div key={index + 15} className="slide">
+            <Zoom
+              // @ts-ignore
+              overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
+              isOpen={isZoomed}
+              setIsOpen={setIsZoomed}
+            >
+              <Image
+                style={{
+                  display: 'inline-block' /* Ensure images are displayed as block elements */,
+                  width: '100%' /* Ensure images take up full width of their container */,
+                  height: 'auto' /* Allow images to scale proportionally */,
+                  borderRadius: '20px',
+                }}
+                src={`/gaza/gaza${index}.jpg`}
+                alt="Photo"
+                width={100}
+                height={200}
+              />
+            </Zoom>
+          </div>
+        ))}
+        <div
+          className="slide-container"
+          style={{
+            backgroundImage: 'url(./back2.jpg)',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Image
+            style={{
+              width: '20%' /* Ensure images take up full width of their container */,
+              height: 'auto' /* Allow images to scale proportionally */,
+              borderRadius: '20px',
+            }}
+            src="./gaza/now.webp"
+            alt="Photo"
+            width={100}
+            height={200}
+          />
+        </div>
       </div>
 
       <footer className={styles.footer}>

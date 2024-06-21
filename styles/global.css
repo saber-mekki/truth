@@ -57,10 +57,10 @@ a {
 /* Add these to your existing CSS file */
 @keyframes scrollAnimation {
   0% {
-    transform: translateX(0%);
+    transform: translateX(-1500%);
   }
   100% {
-    transform: translateX(1000%);
+    transform: translateX(1100%);
   }
 }
 
@@ -78,6 +78,5 @@ a {
   height: auto; /* Maintain aspect ratio */
   padding: 5px;
   position: relative;
-  animation-name: slide;
-  animation: scrollAnimation 40s linear infinite alternate-reverse;
+  animation: scrollAnimation linear 90s infinite;
 }

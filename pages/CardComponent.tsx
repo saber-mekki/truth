@@ -23,31 +23,33 @@ const CardComponent: React.FC<CardProps> = ({
   return (
     <div className="card">
       <ul>
-        <li>
+        <li className="list-item">
           <a className="li_clz">Number of deaths :</a>
           <a className="number_clz">{deathsToday}</a>
         </li>
-        <li>
+        <li className="list-item">
           <a className="li_clz">Number of missings :</a>
           <a className="number_clz">{missing}</a>
         </li>
-        <li>
+        <br />
+        <br />
+        <li className="list-item">
           <a className="li_clz">Number of children Killed :</a>{' '}
           <a className="number_clz">{childrenKilled}</a>
         </li>
-        <li>
+        <li className="list-item" id="x">
           <a className="li_clz">Number of women Killed :</a>{' '}
-          <a className="number_clz">{womenKilled}</a>
+          <a className="number_clz"> {womenKilled}</a>
         </li>
-        <li>
+        <li className="list-item">
           <a className="li_clz">Number of Wounded :</a>
-          <a className="number_clz">{Wounded}</a>
+          <a className="number_clz"> {Wounded}</a>
         </li>
-        <li>
+        <li className="list-item">
           <a className="li_clz">Number of students Killed :</a>
           <a className="number_clz">{studentsKilled}</a>
         </li>
-        <li>
+        <li className="list-item">
           <a className="li_clz">Number of students Wounded :</a>
           <a className="number_clz">{studentsWounded}</a>
         </li>

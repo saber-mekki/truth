@@ -113,32 +113,6 @@ export default function Home() {
             </Zoom>
           </div>
         ))}
-        <div
-          className="slide-container"
-          style={{
-            backgroundImage: 'url(./back2.jpg)',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Image
-            style={{
-              width: '20%' /* Ensure images take up full width of their container */,
-              height: 'auto' /* Allow images to scale proportionally */,
-              borderRadius: '20px',
-            }}
-            src="./gaza/now.webp"
-            alt="Photo"
-            width={100}
-            height={200}
-          />
-        </div>
       </div>
 
       <footer className={styles.footer}>

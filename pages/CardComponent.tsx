@@ -31,8 +31,6 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="li_clz">Number of missings :</a>
           <a className="number_clz">{missing}</a>
         </li>
-        <br />
-        <br />
         <li className="list-item">
           <a className="li_clz">Number of children Killed :</a>{' '}
           <a className="number_clz">{childrenKilled}</a>

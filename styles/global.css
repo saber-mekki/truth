@@ -30,25 +30,26 @@ a {
 }
 .card {
   max-width: 1400px;
+  max-height: max-content;
   margin: 15px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  column-count: 3;
+  column-count: 1;
   column-gap: 20px;
   height: auto;
   break-inside: avoid;
 }
 .list-item {
   background: #f9f9f9;
-  width: 420px;
+  width: 100%;
   padding: 20px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   transition: background 0.3s ease;
   text-align: center;
 }
@@ -102,9 +103,36 @@ a {
 
 .slide {
   flex-shrink: 0; /* Prevent images from shrinking */
-  width: 30vw; /* Ensure each image takes up full viewport width */
+  width: 90vw; /* Ensure each image takes up full viewport width */
   height: auto; /* Maintain aspect ratio */
   padding: 20px;
   position: relative;
   animation: scrollAnimation linear 90s infinite;
+}
+@media (min-width: 921px) {
+  .card {
+    column-count: 2;
+  }
+
+  .list-item {
+    width: 48%;
+  }
+
+  .slide {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    column-count: 3;
+    width: 1100px;
+  }
+
+  .slide {
+    width: 30vw;
+  }
+  .list-item {
+    width: 350px;
+  }
 }

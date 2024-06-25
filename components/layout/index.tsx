@@ -19,7 +19,7 @@ export function Layout({ children }: { children: ReactNode }) {
               className="text-link hover:text-link-light transition-colors no-underline [&_code]:text-link [&_code]:hover:text-link-light [&_code]:transition-colors"
               href="/"
             >
-              <span>
+              <span id="s">
                 <Image src="/gazaLogo.png" alt="Photo" width={100} height={10} />
               </span>
             </Link>
@@ -42,7 +42,7 @@ export function Layout({ children }: { children: ReactNode }) {
               {/* <li className="font-medium" style={{ letterSpacing: '.01px' }}> */}
 
               <h1>See the truth</h1>
-              <div style={{ right: '32px', position: 'absolute' }}>
+              <div style={{ right: '32px', position: 'absolute', margin: 'left 20px' }}>
                 {/* <Image
                   src="/imsrc/angl.jpg"
                   alt="Photo"
@@ -62,7 +62,7 @@ export function Layout({ children }: { children: ReactNode }) {
                     position: "absolute"}}
                 />
                  */}
-                <select value={selectedLanguage} onChange={handleLanguageChange}>
+                <select className="s" value={selectedLanguage} onChange={handleLanguageChange}>
                   <option value="en">English</option>
                   <option value="fr">Français</option>
                   {/* Add more language options as needed */}

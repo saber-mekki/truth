@@ -31,11 +31,11 @@ const CardComponent: React.FC<CardProps> = ({
           <a className="li_clz">Number of missings :</a>
           <a className="number_clz">{missing}</a>
         </li>
-        <li className="list-item">
+        <li className="list-item" id="x">
           <a className="li_clz">Number of children Killed :</a>{' '}
           <a className="number_clz">{childrenKilled}</a>
         </li>
-        <li className="list-item" id="x">
+        <li className="list-item">
           <a className="li_clz">Number of women Killed :</a>{' '}
           <a className="number_clz"> {womenKilled}</a>
         </li>

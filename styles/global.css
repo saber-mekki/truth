@@ -111,15 +111,18 @@ a {
 }
 @media (min-width: 921px) {
   .card {
-    column-count: 2;
+    column-count: 3;
   }
 
   .list-item {
-    width: 48%;
+    width: 100%;
+  }
+  #x {
+    margin-top: 60px;
   }
 
   .slide {
-    width: 45vw;
+    width: 50vw;
   }
 }
 

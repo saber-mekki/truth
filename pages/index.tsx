@@ -36,7 +36,7 @@ export default function Home() {
     const audio = audioRef.current
     if (audio) {
       audio.src = mp3Url
-      audio.preload = 'false'
+      audio.preload = 'auto'
       audio.volume = 0.05
       audio.play()
 
@@ -101,6 +101,7 @@ export default function Home() {
         {Array.from({ length: allPhotoNumber }).map((_, index) => (
           <Zoom
             key={index}
+                          // @ts-ignore
             overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
             isOpen={isZoomed}
             setIsOpen={setIsZoomed}

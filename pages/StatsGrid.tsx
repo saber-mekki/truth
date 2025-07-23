@@ -17,7 +17,7 @@ interface StatsGridProps {
 const StatsGrid: React.FC<StatsGridProps> = ({ stats }) => {
   return (
     <div className={styles.grid}>
-      {stats.map((stat, index) => (
+      {stats && stats.map((stat, index) => (
         <div key={index} className={styles.card}>
           <div className={styles.value}>{stat.value}</div>
           <div className={styles.label}>{stat.label}</div>

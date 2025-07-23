@@ -12,38 +12,64 @@ import 'react-medium-image-zoom/dist/styles.css'
 
 export default function Home() {
   const allPhotoNumber = 26
-  const mp3Url = '/gaza/hatha1.mp3' // Replace with the actual path to your MP3 file
-  const audioRef = useRef()
-
-  const statsData = {
-    deathsToday: '+37k',
-    missing: '+40k',
-    childrenKilled: '+20k',
-    womenKilled: '+15k',
-    Wounded: '+85k',
-    studentsKilled: '+4k',
-    studentsWounded: '+7k',
-  }
+  const mp3Url = '/gaza/hatha1.mp3'
+  const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isZoomed, setIsZoomed] = useState<boolean>(false)
+  const [statsData, setStatsData] = useState({
+    deathsToday: '',
+    childrenKilled: '',
+    womenKilled: '',
+    press:'',
+    civilDefence: '',
+    medical:'',
+    injured:'',
+    massacres:'',
+    lastDailyUpdate:''
+
+  })
 
   useEffect(() => {
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
 
   useEffect(() => {
-    const audio: any = audioRef.current
-    // Set the source and preload the audio
-    audio.src = mp3Url
-    audio.preload = 'false'
-    audio.volume = 0.05
-    // Play the audio when the component mounts
-    audio.play()
+    const audio = audioRef.current
+    if (audio) {
+      audio.src = mp3Url
+      audio.preload = 'false'
+      audio.volume = 0.05
+      audio.play()
 
-    // Cleanup: pause the audio when the component unmounts
-    return () => {
-      audio.pause()
+      return () => {
+        audio.pause()
+      }
     }
   }, [mp3Url])
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch('https://data.techforpalestine.org/api/v2/summary.json')
+        const data = await response.json()
+        console.log({data})
+        setStatsData({
+          lastDailyUpdate:`${data?.lastDailyUpdate?.toLocaleString() || ''}`,
+          massacres:`${data?.massacres?.toLocaleString() || ''}`,
+          injured: `${data?.injured.total?.toLocaleString() || ''}`,
+          deathsToday: `${data?.killed.total?.toLocaleString() || ''}`,
+          childrenKilled: `${data?.killed.children?.toLocaleString() || '+20k'}`,
+          womenKilled: `${data?.killed.women?.toLocaleString() || '+15k'}`,
+          press: `${data?.killed.press?.toLocaleString() || '+37k'}`,
+          civilDefence: `${data?.killed.civilDefence?.toLocaleString() || '+37k'}`,
+          medical:  `${data?.killed.medical?.toLocaleString() || '+37k'}`,
+        })
+      } catch (error) {
+        console.error('Error fetching summary data:', error)
+      }
+    }
+
+    fetchStats()
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -51,8 +77,10 @@ export default function Home() {
         <title>The truth</title>
         <link rel="icon" href="/gazaLogo.ico" />
       </Head>
-      <audio ref={audioRef as any} src={mp3Url} preload="auto" />
+
+      <audio ref={audioRef} src={mp3Url} preload="auto" />
       <CardComponent {...statsData} />
+
       <div
         className="slide-container"
         style={{
@@ -65,60 +93,36 @@ export default function Home() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          flexWrap: 'wrap',
+          gap: '10px',
+          padding: '20px',
         }}
       >
-        {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
-          <div key={index} className="slide">
-            <Zoom
-              // @ts-ignore
-              overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
-              isOpen={isZoomed}
-              setIsOpen={setIsZoomed}
-            >
-              <Image
-                style={{
-                  display: 'inline-block' /* Ensure images are displayed as block elements */,
-                  width: '100%' /* Ensure images take up full width of their container */,
-                  height: 'auto' /* Allow images to scale proportionally */,
-                  borderRadius: '20px',
-                }}
-                src={`/gaza/gaza${index}.jpg`}
-                alt="Photo"
-                width={100}
-                height={200}
-              />
-            </Zoom>
-          </div>
-        ))}
-        {new Array(allPhotoNumber).fill(0).map((image: any, index: number) => (
-          <div key={index + 15} className="slide">
-            <Zoom
-              // @ts-ignore
-              overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
-              isOpen={isZoomed}
-              setIsOpen={setIsZoomed}
-            >
-              <Image
-                style={{
-                  display: 'inline-block' /* Ensure images are displayed as block elements */,
-                  width: '100%' /* Ensure images take up full width of their container */,
-                  height: 'auto' /* Allow images to scale proportionally */,
-                  borderRadius: '20px',
-                }}
-                src={`/gaza/gaza${index}.jpg`}
-                alt="Photo"
-                width={100}
-                height={200}
-              />
-            </Zoom>
-          </div>
+        {Array.from({ length: allPhotoNumber }).map((_, index) => (
+          <Zoom
+            key={index}
+            overlayBgColorEnd="rgba(0, 0, 0, 0.85)"
+            isOpen={isZoomed}
+            setIsOpen={setIsZoomed}
+          >
+            <Image
+              src={`/gaza/gaza${index}.jpg`}
+              alt="Gaza Photo"
+              width={200}
+              height={300}
+              style={{
+                borderRadius: '20px',
+                cursor: 'pointer',
+              }}
+            />
+          </Zoom>
         ))}
       </div>
 
       <footer className={styles.footer}>
         <a>
           <span>
-            <Image src="/gazaLogo.png" alt="Photo" width={100} height={10} />
+            <Image src="/gazaLogo.png" alt="Logo" width={100} height={10} />
           </span>
         </a>
       </footer>

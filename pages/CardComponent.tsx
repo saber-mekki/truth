@@ -1,58 +1,43 @@
-// components/CardComponent.tsx
 
 import React from 'react'
-
+import StatsGrid from './StatsGrid'
 interface CardProps {
   deathsToday: any
-  missing: any
   childrenKilled: any
   womenKilled: any
-  Wounded: any
-  studentsKilled: any
-  studentsWounded: any
+  lastDailyUpdate: any
+  massacres: any
+  injured: any
+  medical: any
+  civilDefence: any
+  press: any
 }
+
 const CardComponent: React.FC<CardProps> = ({
   deathsToday,
-  missing,
   childrenKilled,
   womenKilled,
-  Wounded,
-  studentsKilled,
-  studentsWounded,
+  lastDailyUpdate,
+  massacres,
+  injured,
+  medical,
+  civilDefence,
+  press,
 }) => {
   return (
-    <div className="card">
-      <ul>
-        <li className="list-item">
-          <a className="li_clz">Number of deaths :</a>
-          <a className="number_clz">{deathsToday}</a>
-        </li>
-        <li className="list-item">
-          <a className="li_clz">Number of missings :</a>
-          <a className="number_clz">{missing}</a>
-        </li>
-        <li className="list-item" id="x">
-          <a className="li_clz">Number of children Killed :</a>{' '}
-          <a className="number_clz">{childrenKilled}</a>
-        </li>
-        <li className="list-item">
-          <a className="li_clz">Number of women Killed :</a>{' '}
-          <a className="number_clz"> {womenKilled}</a>
-        </li>
-        <li className="list-item">
-          <a className="li_clz">Number of Wounded :</a>
-          <a className="number_clz"> {Wounded}</a>
-        </li>
-        <li className="list-item">
-          <a className="li_clz">Number of students Killed :</a>
-          <a className="number_clz">{studentsKilled}</a>
-        </li>
-        <li className="list-item">
-          <a className="li_clz">Number of students Wounded :</a>
-          <a className="number_clz">{studentsWounded}</a>
-        </li>
-      </ul>
-    </div>
+    <StatsGrid
+      stats={[
+        { value: deathsToday, label: 'Total Martyrs in Gaza Strip', icon: '/icons/mart_Gaza.svg' },
+        { value: childrenKilled, label: 'Kids (Gaza Strip)', icon: '/icons/Mat_Kids.svg' },
+        { value: womenKilled, label: 'Women (Gaza Strip)', icon: '/icons/Mat_female.svg' },
+        { value: medical, label: 'Medical Staff Martyrs', icon: '/icons/AllDoctors.svg' },
+        { value: press, label: 'Press Martyrs', icon: '/icons/press.svg' },
+        { value: civilDefence, label: 'Civil Defence', icon: '/icons/CivilDef.svg' },
+        { value: massacres, label: 'Massacres', icon: '/icons/Mat.svg' },
+        { value: injured, label: 'Wounded', icon: '/icons/Mat.svg' },
+        { value: lastDailyUpdate, label: 'Last Update', icon: '/icons/update-icon.svg' },
+      ]}
+    />
   )
 }
 
